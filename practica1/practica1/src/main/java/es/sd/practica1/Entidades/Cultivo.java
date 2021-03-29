@@ -23,10 +23,6 @@ public class Cultivo {
     public Cultivo() {
     }
 
-    public String getZona() {
-        return zona;
-    }
-
     public String getEspecie() {
         return especie;
     }
@@ -49,6 +45,10 @@ public class Cultivo {
 
     public void setFechaPlantado(LocalDate fechaPlantado) {
         this.fechaPlantado = fechaPlantado;
+    }
+
+    public String getZona() {
+        return zona;
     }
 
     public void setZona(String zona) {

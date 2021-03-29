@@ -23,9 +23,6 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <h1 class="navbar-brand">Fito-San</h1>
-    <div class="container">
-      <span class="navbar-brand" href="#">Bienvenido a la zona de cultivos</span>
-    </div>
   </nav>
 
   <!-- Page Content -->
@@ -33,7 +30,7 @@
 
     <div class="row">
 
-      <div class="col-lg-2">
+      <div class="col-lg-3">
 
         <h1 class="my-4">Fito-San</h1>
         <div class="list-group">
@@ -43,38 +40,32 @@
         </div>
 
       </div>
-      <!-- /.col-lg-2 -->
+      <!-- /.col-lg-3 -->
 
-      <div class="col-lg-8">
+      <div class="col-lg-9">
 
         <div class="row my-4">
-          
-          <p th:each="cultivo : ${listaCultivos}">
-            
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h4 class="card-title" th:text="${cultivo.especie}"></h4>
-                  <h5 th:text="${cultivo.fechaPlantado}"></h5>
-                  <p class="card-text" th:text="${cultivo.variedad} +' '+ ${cultivo.zona}"></p>
-                </div>
-                <div class="card-footer">
-                  <a th:href="@{'/editarCultivo/'+${cultivo.id}}">Editar cultivo</a>
-                </div>
-              </div>
+            <h1 class="text-center bg-dark bg-dark-text">Formulario para registrar un nuevo cultivo</h1>
+            <div class="my-4 formulario">
+                <form action="/addNuevoCultivo" method="POST">
+                    <label for="especie">Especie:</label><br>
+                    <input type="text" id="especie" name="especie" required size="50"><br><br>
+                    <label for="variedad">Variedad:</label><br>
+                    <input type="text" id="variedad" name="variedad" required size="50"><br><br>
+                    <label for="zona">Zona de plantación:</label><br>
+                    <input type="text" id="zona" name="zona" size="50"><br><br>
+                    <label for="fechaPlantado">Fecha de plantación del cultivo:</label><br>
+                    <input type="date" id="fechaPlantado" name="fechaPlantado" required><br><br>
+                    <div class="text-center">
+                        <input type="submit" value="Enviar">
+                    </div>
+                </form>
             </div>
-            
-          </p>
-          
-
         </div>
         <!-- /.row -->
 
       </div>
-      <!-- /.col-lg-8 -->
-      <div class="col-lg-2 my-4">
-        <a class="text-center list-group-item" href="/formularioNuevoCultivo">Añadir cultivo</a>
-      </div>
+      <!-- /.col-lg-9 -->
 
     </div>
     <!-- /.row -->

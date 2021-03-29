@@ -6,3 +6,16 @@
 body {
   padding-top: 56px;
 }
+
+.items-center{
+  align-items: center;
+}
+
+.bg-dark-text{
+  color: white;
+}
+
+.formulario{
+  margin-left: auto;
+  margin-right: auto;
+}
