@@ -18,14 +18,5 @@ public class ControladorCultivo {
         return "cultivos";
     }
 
-    @GetMapping(value="/productos")
-    public String productos(Model model) {
-        return "productos";
-    }
-
-    @GetMapping(value="/tratamientos")
-    public String tratamientos(Model model) {
-        return "tratamientos";
-    }
     
 }
