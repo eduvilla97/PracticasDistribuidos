@@ -47,6 +47,13 @@ public class Producto {
 
     public void setPlazoRecoleccion(int plazoRecoleccion) {
         this.plazoRecoleccion = plazoRecoleccion;
+    }
+
+    public Producto(String nombre, String descripcion, int plazoReentrada, int plazoRecoleccion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.plazoReentrada = plazoReentrada;
+        this.plazoRecoleccion = plazoRecoleccion;
     } 
     
 }

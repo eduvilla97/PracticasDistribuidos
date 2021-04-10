@@ -57,5 +57,15 @@ public class Tratamiento {
     public void setFinRecoleccion(LocalDate finRecoleccion) {
         this.finRecoleccion = finRecoleccion;
     }
+
+    public Tratamiento(Cultivo cultivoAplicado, Producto productoAplicado, String lote, LocalDate fechaInicio,
+            LocalDate finReentrada, LocalDate finRecoleccion) {
+        this.cultivoAplicado = cultivoAplicado;
+        this.productoAplicado = productoAplicado;
+        this.lote = lote;
+        this.fechaInicio = fechaInicio;
+        this.finReentrada = finReentrada;
+        this.finRecoleccion = finRecoleccion;
+    }
     
 }

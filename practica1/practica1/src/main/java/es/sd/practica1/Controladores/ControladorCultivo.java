@@ -1,6 +1,7 @@
 package es.sd.practica1.Controladores;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class ControladorCultivo {
 
     @GetMapping(value="/")
     public String index(Model model) {
+        List<Cultivo> prueba =  cultivos.findAll();
         model.addAttribute("listaCultivos", cultivos.findAll());
         return "cultivos";
     }

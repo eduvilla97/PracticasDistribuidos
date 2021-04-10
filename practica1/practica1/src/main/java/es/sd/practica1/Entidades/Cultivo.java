@@ -20,7 +20,12 @@ public class Cultivo {
     private LocalDate fechaPlantado;
     private String zona;
 
-    public Cultivo() {
+    public Cultivo(String especie, String variedad, LocalDate fechaPlantado, String zona) {
+        this.especie = especie;
+        this.variedad = variedad;
+        this.fechaPlantado = fechaPlantado;
+        this.zona = zona;
+
     }
 
     public String getEspecie() {
