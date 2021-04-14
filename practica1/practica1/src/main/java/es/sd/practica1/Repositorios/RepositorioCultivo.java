@@ -6,6 +6,6 @@ import es.sd.practica1.Entidades.Cultivo;
 
 public interface RepositorioCultivo extends JpaRepository<Cultivo,Long>{
 
-    Cultivo findByNombre(String nombre); 
+    Cultivo findByEspecie(String especie); 
     
 }

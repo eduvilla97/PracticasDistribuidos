@@ -6,6 +6,6 @@ import es.sd.practica1.Entidades.Producto;
 
 public interface RepositorioProducto extends JpaRepository<Producto,Long>{
 
-    Producto findByNombre(String nombre); 
+    Producto findByNombre(String producto); 
     
 }

@@ -21,8 +21,9 @@ public class ServicioCultivo {
         return repositorio.findAll();
     }
 
-    public Cultivo findByNombre(String nombre) {
-        return repositorio.findByNombre(nombre);
+
+    public Cultivo findByEspecie(String especie) {
+        return repositorio.findByEspecie(especie);
     }
     
 }

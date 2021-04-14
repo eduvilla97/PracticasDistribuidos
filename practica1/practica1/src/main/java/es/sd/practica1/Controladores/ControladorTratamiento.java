@@ -50,7 +50,7 @@ public class ControladorTratamiento {
     public String nuevoTratamiento(@RequestBody String cultivo, @RequestBody String producto, @RequestBody String lote,@RequestBody String fechaInicio) {
         Tratamiento nuevoTratamiento = new Tratamiento();
         Producto productoAplicado = servicioProductos.findByNombre(producto);
-        Cultivo cultivoAplicado = servicioCultivos.findByNombre(cultivo);
+        Cultivo cultivoAplicado = servicioCultivos.findByEspecie(cultivo);
 
         nuevoTratamiento.setLote(lote);
         nuevoTratamiento.setFechaInicio(LocalDate.parse(fechaInicio));
