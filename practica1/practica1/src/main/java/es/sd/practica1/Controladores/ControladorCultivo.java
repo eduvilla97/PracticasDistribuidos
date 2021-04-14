@@ -30,6 +30,7 @@ public class ControladorCultivo {
         List<Cultivo> prueba =  cultivos.findAll();
 
         model.addAttribute("listaCultivos", cultivos.findAll());
+
         return "cultivos";
     }
 
