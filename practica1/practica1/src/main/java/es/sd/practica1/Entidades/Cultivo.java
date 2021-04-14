@@ -28,6 +28,9 @@ public class Cultivo {
 
     }
 
+    public Cultivo() {
+    }
+
     public String getEspecie() {
         return especie;
     }
