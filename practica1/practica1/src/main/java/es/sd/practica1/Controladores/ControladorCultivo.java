@@ -27,7 +27,7 @@ public class ControladorCultivo {
     @GetMapping(value="/")
     public String index(Model model) {
         List<Cultivo> prueba =  cultivos.findAll();
-        model.addAttribute("listaCultivos", cultivos.findAll());
+        model.addAttribute("listaCultivos", prueba);
         return "cultivos";
     }
 
