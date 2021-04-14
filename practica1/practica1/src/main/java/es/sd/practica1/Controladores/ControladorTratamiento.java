@@ -1,7 +1,6 @@
 package es.sd.practica1.Controladores;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import es.sd.practica1.Entidades.Cultivo;
 import es.sd.practica1.Entidades.Producto;
@@ -17,8 +16,6 @@ import es.sd.practica1.Entidades.Tratamiento;
 import es.sd.practica1.Servicios.ServicioCultivo;
 import es.sd.practica1.Servicios.ServicioProducto;
 import es.sd.practica1.Servicios.ServicioTratamiento;
-
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
