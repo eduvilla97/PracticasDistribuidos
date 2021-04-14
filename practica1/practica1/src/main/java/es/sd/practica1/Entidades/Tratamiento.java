@@ -70,5 +70,13 @@ public class Tratamiento {
         this.finReentrada = finReentrada;
         this.finRecoleccion = finRecoleccion;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     
 }

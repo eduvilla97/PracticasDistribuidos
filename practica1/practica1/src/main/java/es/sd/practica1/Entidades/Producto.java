@@ -57,6 +57,14 @@ public class Producto {
         this.descripcion = descripcion;
         this.plazoReentrada = plazoReentrada;
         this.plazoRecoleccion = plazoRecoleccion;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     } 
     
 }

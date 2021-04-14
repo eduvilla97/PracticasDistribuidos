@@ -64,5 +64,13 @@ public class Cultivo {
     public void setZona(String zona) {
         this.zona = zona;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     
 }
