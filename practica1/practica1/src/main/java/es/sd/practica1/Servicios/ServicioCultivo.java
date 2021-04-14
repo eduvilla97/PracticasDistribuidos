@@ -20,5 +20,9 @@ public class ServicioCultivo {
     public List<Cultivo> findAll() {
         return repositorio.findAll();
     }
+
+    public Cultivo findByNombre(String nombre) {
+        return repositorio.findByNombre(nombre);
+    }
     
 }
