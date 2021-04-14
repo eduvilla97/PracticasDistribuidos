@@ -4,12 +4,15 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Cultivo {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @OneToMany(mappedBy = "cultivoAplicado")
@@ -25,7 +28,6 @@ public class Cultivo {
         this.variedad = variedad;
         this.fechaPlantado = fechaPlantado;
         this.zona = zona;
-
     }
 
     public Cultivo() {

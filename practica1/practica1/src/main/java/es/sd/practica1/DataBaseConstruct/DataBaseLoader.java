@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import es.sd.practica1.Entidades.Cultivo;
 import es.sd.practica1.Entidades.Producto;
@@ -13,6 +14,7 @@ import es.sd.practica1.Repositorios.RepositorioCultivo;
 import es.sd.practica1.Repositorios.RepositorioProducto;
 import es.sd.practica1.Repositorios.RepositorioTratamiento;
 
+@Component
 public class DataBaseLoader {
    
     
@@ -31,12 +33,12 @@ public class DataBaseLoader {
         LocalDate localDate = LocalDate.now();
 
 
-        Cultivo Margarita = new Cultivo("Margarita","Amarilla",localDate,"España");
+        Cultivo Margarita = new Cultivo("Margarita","Amarilla",localDate,"Espana");
         Cultivo Rosa = new Cultivo("Rosa","Roja",localDate,"España");
-        Cultivo Clavel = new Cultivo("Clavel","Amarilla",localDate,"España");
-        Cultivo Crisantemo = new Cultivo("Crisantemo","Azul",localDate,"España");
-        Cultivo RosaNegra = new Cultivo("Rosa","Negra",localDate,"España");
-        Cultivo Tulipan = new Cultivo("Tulipan","Amarillo",localDate,"España");
+        Cultivo Clavel = new Cultivo("Clavel","Amarilla",localDate,"Espana");
+        Cultivo Crisantemo = new Cultivo("Crisantemo","Azul",localDate,"Espana");
+        Cultivo RosaNegra = new Cultivo("Rosa","Negra",localDate,"Espana");
+        Cultivo Tulipan = new Cultivo("Tulipan","Amarillo",localDate,"Espana");
 
 
 
