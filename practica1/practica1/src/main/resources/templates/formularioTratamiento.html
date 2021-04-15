@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Shop Homepage - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" th:rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link th:href="@{/css/shop-homepage.css}" th:rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <h1 class="navbar-brand">Fito-San</h1>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+
+        <h1 class="my-4">Fito-San</h1>
+        <div class="list-group">
+          <a href="/cultivos" class="list-group-item">Cultivos</a>
+          <a href="/productos" class="list-group-item">Productos</a>
+          <a href="/tratamientos" class="list-group-item">Tratamientos</a>
+        </div>
+
+      </div>
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9">
+
+        <div class="row my-4">
+            <h1 class="text-center bg-dark bg-dark-text">Formulario para registrar un nuevo cultivo</h1>
+            <div class="my-4 formulario">
+                <form action="/nuevoTratamiento" method="POST">
+                    <label for="cultivo">Cultivo sobre el que se aplica:</label><br>
+                    <select class="form-control" name="cultivo">
+                      <div th:each="cultivo : ${listaCultivos}">
+                        <option th:text="${cultivo.especie}"></option>
+                      </div>
+                    </select><br><br>
+                    <label for="producto">Producto a aplicar:</label><br>
+                    <select class="form-control" name="producto" id="producto">
+                      <div th:each="producto : ${listaProductos}">
+                        <option th:text="${producto.nombre}"></option>
+                      </div>
+                    </select><br><br>
+                    <label for="lote">Numero de lote del producto:</label><br>
+                    <input type="text" id="lote" name="lote" size="50"><br><br>
+                    <label for="fechaInicio">Fecha de inicio del tratamiento:</label><br>
+                    <input type="date" id="fechaInicio" name="fechaInicio" required><br><br>
+                    <div class="text-center">
+                        <input type="submit" value="Enviar">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Fito-San 2021</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

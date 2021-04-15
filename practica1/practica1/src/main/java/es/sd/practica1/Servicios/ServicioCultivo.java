@@ -29,5 +29,9 @@ public class ServicioCultivo {
         if (cultivoInBd.isPresent()) return cultivoInBd.get();
         else return null;
     }
+
+    public Cultivo findByEspecie(String especie) {
+        return repositorio.findByEspecie(especie);
+    }
     
 }

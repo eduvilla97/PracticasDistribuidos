@@ -8,4 +8,8 @@ import es.sd.practica1.Entidades.Cultivo;
 
 public interface RepositorioCultivo extends JpaRepository<Cultivo,Long>{ 
     Optional<Cultivo> findById(Long id);
+public interface RepositorioCultivo extends JpaRepository<Cultivo,Long>{
+
+    Cultivo findByEspecie(String especie); 
+    
 }

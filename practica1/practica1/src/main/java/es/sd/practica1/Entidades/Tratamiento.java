@@ -29,13 +29,22 @@ public class Tratamiento {
     public Tratamiento() {
     }
 
-    public long getId() {
-        return id;
+    public Producto getProductoAplicado() {
+        return productoAplicado;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setProductoAplicado(Producto productoAplicado) {
+        this.productoAplicado = productoAplicado;
     }
+
+    public Cultivo getCultivoAplicado() {
+        return cultivoAplicado;
+    }
+
+    public void setCultivoAplicado(Cultivo cultivoAplicado) {
+        this.cultivoAplicado = cultivoAplicado;
+    }
+
 
     public String getLote() {
         return lote;
@@ -71,8 +80,8 @@ public class Tratamiento {
 
     public Tratamiento(Cultivo cultivoAplicado, Producto productoAplicado, String lote, LocalDate fechaInicio,
             LocalDate finReentrada, LocalDate finRecoleccion) {
-        this.cultivoAplicado = cultivoAplicado;
-        this.productoAplicado = productoAplicado;
+        this.setCultivoAplicado(cultivoAplicado);
+        this.setProductoAplicado(productoAplicado);
         this.lote = lote;
         this.fechaInicio = fechaInicio;
         this.finReentrada = finReentrada;
