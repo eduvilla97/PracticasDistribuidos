@@ -45,7 +45,7 @@
       <div class="col-lg-9">
 
         <div class="row my-4">
-            <h1 class="text-center bg-dark bg-dark-text">Formulario para registrar un nuevo cultivo</h1>
+            <h1 class="text-center bg-dark bg-dark-text">Formulario para registrar un nuevo tratamiento</h1>
             <div class="my-4 formulario">
                 <form action="/nuevoTratamiento" method="POST">
                     <label for="cultivo">Cultivo sobre el que se aplica:</label><br>
@@ -53,13 +53,17 @@
                       <div th:each="cultivo : ${listaCultivos}">
                         <option th:text="${cultivo.especie}"></option>
                       </div>
-                    </select><br><br>
+                    </select>
+                    <a class="text-center list-group-item" th:href="@{'/formularioNuevoCultivo'}">Nuevo Cultivo</a>
+                    <br><br>
                     <label for="producto">Producto a aplicar:</label><br>
                     <select class="form-control" name="producto" id="producto">
                       <div th:each="producto : ${listaProductos}">
                         <option th:text="${producto.nombre}"></option>
                       </div>
-                    </select><br><br>
+                    </select>
+                    <a class="text-center list-group-item" th:href="@{'/formularioNuevoProducto'}">Nuevo Producto</a>
+                    <br><br>
                     <label for="lote">Numero de lote del producto:</label><br>
                     <input type="text" id="lote" name="lote" size="50"><br><br>
                     <label for="fechaInicio">Fecha de inicio del tratamiento:</label><br>
