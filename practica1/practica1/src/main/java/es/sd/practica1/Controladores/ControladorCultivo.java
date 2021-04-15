@@ -48,10 +48,18 @@ public class ControladorCultivo {
     @RequestMapping(value="/modifyCultivo/{id}", method=RequestMethod.GET)
     public String modifycultivo(@PathVariable Long id, String especie, String variedad, String zona, String fechaPlantado) {
         Cultivo nuevoCultivo = cultivos.findById(id);
-        nuevoCultivo.setEspecie(especie);
-        nuevoCultivo.setVariedad(variedad);
-        nuevoCultivo.setZona(zona);
-        nuevoCultivo.setFechaPlantado(LocalDate.parse(fechaPlantado));
+        if(!especie.isBlank()){
+            nuevoCultivo.setEspecie(especie);
+        }
+        if(!variedad.isBlank()){
+            nuevoCultivo.setVariedad(variedad);
+        }
+        if(!zona.isBlank()){
+            nuevoCultivo.setZona(zona);
+        }
+        if(!fechaPlantado.isBlank()){
+            nuevoCultivo.setFechaPlantado(LocalDate.parse(fechaPlantado));
+        }
         cultivos.save(nuevoCultivo);
         return "exitomodificacion";
     }
