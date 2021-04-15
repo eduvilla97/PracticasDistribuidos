@@ -38,9 +38,24 @@ public class ControladorCultivo {
     }
 
     @GetMapping(value="/editarCultivo/{id}")
-    public String editarCultivo(@PathVariable Long id) {
-        return "";
+    public String editarCultivo(@PathVariable Long id, Model model) {
+        Cultivo micultivo = cultivos.findById(id);
+        model.addAttribute("cultivo", micultivo);
+        return "editarcultivo";
     }
+
+
+    @RequestMapping(value="/modifyCultivo/{id}", method=RequestMethod.GET)
+    public String modifycultivo(@PathVariable Long id, String especie, String variedad, String zona, String fechaPlantado) {
+        Cultivo nuevoCultivo = cultivos.findById(id);
+        nuevoCultivo.setEspecie(especie);
+        nuevoCultivo.setVariedad(variedad);
+        nuevoCultivo.setZona(zona);
+        nuevoCultivo.setFechaPlantado(LocalDate.parse(fechaPlantado));
+        cultivos.save(nuevoCultivo);
+        return "exitomodificacion";
+    }
+
     
     @GetMapping(value="/formularioNuevoCultivo")
     public String formularioNuevoCultivo(Model model) {

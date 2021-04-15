@@ -1,6 +1,9 @@
 package es.sd.practica1.Servicios;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.Id;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,11 @@ public class ServicioCultivo {
         return repositorio.findAll();
     }
 
+    public Cultivo findById(long id){
+        Optional<Cultivo> cultivoInBd = repositorio.findById(id);
+        if (cultivoInBd.isPresent()) return cultivoInBd.get();
+        else return null;
+    }
 
     public Cultivo findByEspecie(String especie) {
         return repositorio.findByEspecie(especie);
