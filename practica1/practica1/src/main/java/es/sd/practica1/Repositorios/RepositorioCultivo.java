@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import es.sd.practica1.Entidades.Cultivo;
 
-public interface RepositorioCultivo extends JpaRepository<Cultivo,Long>{ 
+public interface RepositorioCultivo extends JpaRepository<Cultivo,Long>{
+
+    Cultivo findByEspecie(String especie); 
     
 }
