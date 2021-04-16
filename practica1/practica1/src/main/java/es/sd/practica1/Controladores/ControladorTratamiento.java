@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,11 @@ public class ControladorTratamiento {
     @Autowired
     private ServicioTratamiento servicioTratamientos;
 
+    @ModelAttribute
+    private void m(Model model) {
+        model.addAttribute("vieneDeCrearUnTratamiento", false);
+    }
+
     @GetMapping(value="/tratamientos")
     public String tratamientos(Model model) {
         model.addAttribute("listaTratamientos", servicioTratamientos.findAll());
@@ -40,7 +46,8 @@ public class ControladorTratamiento {
     }
 
     @GetMapping(value="/formularioNuevoTratamiento")
-    public String getMethodName(Model model) {
+    public String formularioNuevoTratamiento(Model model) {
+        model.addAttribute("vieneDeCrearUnTratamiento", true);
         model.addAttribute("listaCultivos", servicioCultivos.findAll());
         model.addAttribute("listaProductos", servicioProductos.findAll());
         return "formularioTratamiento";
