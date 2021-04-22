@@ -48,24 +48,46 @@
             <h1 class="text-center bg-dark bg-dark-text">Formulario para registrar un nuevo tratamiento</h1>
             <div class="my-4 formulario">
                 <form action="/nuevoTratamiento" method="POST">
-                    <label for="cultivo">Cultivo sobre el que se aplica:</label><br>
-                    <select class="form-control" name="cultivo">
+                    <h3><label for="cultivo">Cultivo sobre el que se aplica:</label></h3><br>
+                    <select id="selectCultivo" class="form-control" name="cultivoSeleccionado">
                       <div th:each="cultivo : ${listaCultivos}">
-                        <option th:text="${cultivo.especie}"></option>
+                        <option th:text="${cultivo.especie}" th:value="${cultivo.especie}"></option>
                       </div>
                     </select>
-                    <a class="text-center list-group-item" th:href="@{'/formularioNuevoCultivo'}">Nuevo Cultivo</a>
+                    <button id="mostrarCultivo" class="text-center list-group-item" onclick="mostrarNuevoCultivo()">Nuevo Cultivo</button>
+                    <div id="nuevoCultivo" style="display: none;">
+                      <label for="especie">Especie:</label><br>
+                      <input type="text" id="especie" name="especie" size="50"><br><br>
+                      <label for="variedad">Variedad:</label><br>
+                      <input type="text" id="variedad" name="variedad" size="50"><br><br>
+                      <label for="zona">Zona de plantación:</label><br>
+                      <input type="text" id="zona" name="zona" size="50"><br><br>
+                      <label for="fechaPlantado">Fecha de plantación del cultivo:</label><br>
+                      <input type="date" id="fechaPlantado" name="fechaPlantado"><br><br>
+                    </div>
+                    <button id="ocultarCultivo" style="display: none;" class="text-center list-group-item" onclick="ocultarNuevoCultivo()">Cancelar nuevo cultivo</button>
                     <br><br>
-                    <label for="producto">Producto a aplicar:</label><br>
-                    <select class="form-control" name="producto" id="producto">
+                    <h3><label for="producto">Producto a aplicar:</label></h3><br>
+                    <select class="form-control" name="productoSeleccionado" id="selectProducto">
                       <div th:each="producto : ${listaProductos}">
-                        <option th:text="${producto.nombre}"></option>
+                        <option th:text="${producto.nombre}" th:value="${producto.nombre}"></option>
                       </div>
                     </select>
-                    <a class="text-center list-group-item" th:href="@{'/formularioNuevoProducto'}">Nuevo Producto</a>
+                    <button id="mostrarProducto" class="text-center list-group-item" onclick="mostrarNuevoProducto()">Nuevo Producto</button>
+                    <div id="nuevoProducto" style="display: none;">
+                      <label for="nombre">Nombre:</label><br>
+                      <input type="text" id="nombre" name="nombre" size="50"><br><br>
+                      <label for="descripcion">Descripcion:</label><br>
+                      <input type="text" id="descripcion" name="descripcion" size="50"><br><br>
+                      <label for="plazoReentrada">Plazo de reentrada:</label><br>
+                      <input type="number" id="plazoReentrada" value=0 name="plazoReentrada" size="50"><br><br>
+                      <label for="plazoRecoleccion">Plazo de recoleccion:</label><br>
+                      <input type="number" id="plazoRecoleccion" value=0 name="plazoRecoleccion"><br><br>
+                    </div>
+                    <button id="ocultarProducto" style="display: none;" class="text-center list-group-item" onclick="ocultarNuevoProducto()">Cancelar nuevo producto</button>
                     <br><br>
                     <label for="lote">Numero de lote del producto:</label><br>
-                    <input type="text" id="lote" name="lote" size="50"><br><br>
+                    <input type="text" id="lote" name="lote" size="50" required><br><br>
                     <label for="fechaInicio">Fecha de inicio del tratamiento:</label><br>
                     <input type="date" id="fechaInicio" name="fechaInicio" required><br><br>
                     <div class="text-center">
@@ -96,6 +118,8 @@
   <!-- Bootstrap core JavaScript -->
   <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
   <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/mostrarOcultar.js}">
+  </script>
 
 </body>
 

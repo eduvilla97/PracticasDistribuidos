@@ -57,11 +57,11 @@
               <div class="card h-100">
                 <div class="card-body">
                   <h4 class="card-title" th:text="${producto.nombre}"></h4>
-                  <h5 th:text="${producto.fechaPlantado}"></h5>
-                  <p class="card-text" th:text="${producto.variedad} +' '+ ${producto.zona}"></p>
+                  <h5 th:text="${producto.descripcion}"></h5>
+                  <p class="card-text" th:text="${producto.plazoReentrada} +' '+ ${producto.plazoRecoleccion}"></p>
                 </div>
                 <div class="card-footer">
-                  <a th:href="@{'/editarProductos/'+${cultivo.id}}">Editar producto</a>
+                  <a th:href="@{'/editarProducto/'+${producto.id}}">Editar producto</a>
                 </div>
               </div>
             
@@ -74,7 +74,7 @@
       </div>
       <!-- /.col-lg-8 -->
       <div class="col-lg-2 my-4">
-        <a class="text-center list-group-item" href="/formularioNuevoCultivo">Añadir cultivo</a>
+        <a class="text-center list-group-item" href="/formularioNuevoProducto">Añadir producto</a>
       </div>
 
     </div>
