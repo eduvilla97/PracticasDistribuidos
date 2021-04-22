@@ -48,10 +48,25 @@ public class ControladorTratamiento {
     }
     
     @PostMapping(value="/nuevoTratamiento")
-    public String nuevoTratamiento(Model model,@RequestBody String cultivo, @RequestBody String producto, @RequestBody String lote,@RequestBody String fechaInicio) {
+    public String nuevoTratamiento( String cultivoSeleccionado, String productoSeleccionado, String lote, String fechaInicio,
+     String especie, String variedad, String zona,  String fechaPlantado,
+     String nombre, String descripcion, int plazoReentrada, int plazoRecoleccion) {
         Tratamiento nuevoTratamiento = new Tratamiento();
-        Producto productoAplicado = servicioProductos.findByNombre(producto);
-        Cultivo cultivoAplicado = servicioCultivos.findByEspecie(cultivo);
+        Producto productoAplicado;
+        Cultivo cultivoAplicado;
+        if(especie.isBlank()){
+            cultivoAplicado = servicioCultivos.findByEspecie(cultivoSeleccionado);
+        }else{
+            cultivoAplicado = new Cultivo(especie,variedad,LocalDate.parse(fechaPlantado),zona);
+            servicioCultivos.save(cultivoAplicado);
+        }
+        if(nombre.isBlank()){
+            productoAplicado = servicioProductos.findByNombre(productoSeleccionado);
+        }else{
+            productoAplicado = new Producto(nombre,descripcion,plazoReentrada,plazoRecoleccion);
+            servicioProductos.save(productoAplicado);
+        }
+        
 
         nuevoTratamiento.setLote(lote);
         nuevoTratamiento.setFechaInicio(LocalDate.parse(fechaInicio));
