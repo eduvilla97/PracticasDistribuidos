@@ -1,11 +1,15 @@
 package es.sd.practica1.Controladores;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import es.sd.practica1.Entidades.Cultivo;
 import es.sd.practica1.Entidades.Producto;
 import es.sd.practica1.Entidades.Tratamiento;
+import es.sd.practica1.Repositorios.RepositorioTratamiento;
 import es.sd.practica1.Servicios.ServicioCultivo;
 import es.sd.practica1.Servicios.ServicioProducto;
 import es.sd.practica1.Servicios.ServicioTratamiento;
+import jdk.vm.ci.meta.Local;
 
 
 @Controller
@@ -27,6 +33,14 @@ public class ControladorTratamiento {
     private ServicioProducto servicioProductos;
     @Autowired
     private ServicioTratamiento servicioTratamientos;
+
+    @Autowired
+    private RepositorioTratamiento RepositorioTratamiento;
+
+    @ModelAttribute
+    private void m(Model model) {
+        model.addAttribute("vieneDeCrearUnTratamiento", false);
+    }
 
     @GetMapping(value="/tratamientos")
     public String tratamientos(Model model) {
@@ -40,7 +54,8 @@ public class ControladorTratamiento {
     }
 
     @GetMapping(value="/formularioNuevoTratamiento")
-    public String getMethodName(Model model) {
+    public String formularioNuevoTratamiento(Model model) {
+        model.addAttribute("vieneDeCrearUnTratamiento", true);
         model.addAttribute("listaCultivos", servicioCultivos.findAll());
         model.addAttribute("listaProductos", servicioProductos.findAll());
         return "formularioTratamiento";
@@ -61,6 +76,28 @@ public class ControladorTratamiento {
 
         servicioTratamientos.save(nuevoTratamiento);
         return "exito";
+    }
+
+    @GetMapping(value = "/buscandoTratamiento")
+    public String busquedaTratamientoPorFecha(@RequestBody LocalDate fechaInicio, Model model){
+        List<Tratamiento> todostratamientos = servicioTratamientos.findAll();
+        List<Tratamiento> tratamientosEnVigor = new LinkedList();
+        for (Tratamiento tratamiento: todostratamientos){
+            LocalDate fechafinalTratamiento = LocalDate.now();
+            LocalDate finrecoleccion = tratamiento.getFinRecoleccion();
+            LocalDate finReentrada = tratamiento.getFinReentrada();
+            if (finReentrada.isAfter(finrecoleccion) || finReentrada.isEqual(finrecoleccion)){
+                 fechafinalTratamiento = finrecoleccion;
+            }
+            else {  fechafinalTratamiento = finReentrada;}
+            
+            Optional<Tratamiento> tratamientoEnVigor = servicioTratamientos.searchByDate(fechaInicio, fechafinalTratamiento);
+            if (tratamientoEnVigor != null){
+                tratamientosEnVigor.add(tratamientoEnVigor.get());
+            }
+        }
+        model.addAttribute("tratamientosEnVigor", tratamientosEnVigor);
+        return "tratamientos";
     }
     
     

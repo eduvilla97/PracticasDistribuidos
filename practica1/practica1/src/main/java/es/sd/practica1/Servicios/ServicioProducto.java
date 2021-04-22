@@ -27,5 +27,9 @@ public class ServicioProducto {
         if(productoInDB.isPresent()) return productoInDB.get();
         return null;
     }
+
+    public Producto findByNombre(String producto) {
+        return repositorio.findByNombre(producto);
+    }
     
 }

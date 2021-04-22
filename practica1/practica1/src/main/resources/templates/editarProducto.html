@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Shop Homepage - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" th:rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link th:href="@{/css/shop-homepage.css}" th:rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <a><h1 th:text="${producto.nombre}"></h1></a>
+  <a><h1 th:text="${producto.descripcion}"></h1></a>
+  <a><h1 th:text="${producto.plazoReentrada}"></h1></a>
+  <a><h1 th:text="${producto.plazoRecoleccion}"></h1></a>
+
+  <!-- Page Content -->
+        <div class="row my-4">
+            <h1 class="text-center bg-dark bg-dark-text">Formulario para editar un producto</h1>
+            <div class="my-4 formulario">
+                <form TH:action="@{'/editarProductos/'+${producto.id}}" method="GET">
+                    <label for="nombre">Nombre:</label><br>
+                    <input type="text" id="nombre" name="nombre" required size="50"><br><br>
+                    <label for="descripcion">Descripcion:</label><br>
+                    <input type="text" id="descripcion" name="descripcion" size="50"><br><br>
+                    <label for="plazoReentrada">Plazo de reentrada:</label><br>
+                    <input type="text" id="reentrada" name="reentrada" size="50"><br><br>
+                    <label for="plazoRecoleccion">Plazo de recoleccion:</label><br>
+                    <input type="date" id="recoleccion" name="recoleccion" required><br><br>
+                    <div class="text-center">
+                        <input type="submit" value="Enviar">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.row -->
+
+     
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Fito-San 2021</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
