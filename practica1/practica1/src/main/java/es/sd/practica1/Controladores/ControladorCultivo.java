@@ -23,10 +23,6 @@ public class ControladorCultivo {
     @Autowired
     private ServicioCultivo cultivos;
 
-    @ModelAttribute
-    private void m(Model model) {
-        model.addAttribute("vieneDeCrearUnTratamiento", false);
-    }
 
     @GetMapping(value="/")
     public String index(Model model) {
@@ -76,9 +72,6 @@ public class ControladorCultivo {
         nuevoCultivo.setZona(zona);
         nuevoCultivo.setFechaPlantado(LocalDate.parse(fechaPlantado));
         cultivos.save(nuevoCultivo);
-        if((boolean) model.getAttribute("vieneDeCrearUnTratamiento")){
-            return "formularioTratamiento";
-        }
         return "exito";
     }
     
