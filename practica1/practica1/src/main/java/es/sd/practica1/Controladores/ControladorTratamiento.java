@@ -17,11 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import es.sd.practica1.Entidades.Cultivo;
 import es.sd.practica1.Entidades.Producto;
 import es.sd.practica1.Entidades.Tratamiento;
-import es.sd.practica1.Repositorios.RepositorioTratamiento;
 import es.sd.practica1.Servicios.ServicioCultivo;
 import es.sd.practica1.Servicios.ServicioProducto;
 import es.sd.practica1.Servicios.ServicioTratamiento;
-import jdk.vm.ci.meta.Local;
 
 
 @Controller
@@ -33,9 +31,6 @@ public class ControladorTratamiento {
     private ServicioProducto servicioProductos;
     @Autowired
     private ServicioTratamiento servicioTratamientos;
-
-    @Autowired
-    private RepositorioTratamiento RepositorioTratamiento;
 
     @ModelAttribute
     private void m(Model model) {
@@ -95,7 +90,7 @@ public class ControladorTratamiento {
     @GetMapping(value = "/buscandoTratamiento")
     public String busquedaTratamientoPorFecha(@RequestBody LocalDate fechaInicio, Model model){
         List<Tratamiento> todostratamientos = servicioTratamientos.findAll();
-        List<Tratamiento> tratamientosEnVigor = new LinkedList();
+        LinkedList<Tratamiento> tratamientosEnVigor = new LinkedList<>();
         for (Tratamiento tratamiento: todostratamientos){
             LocalDate fechafinalTratamiento = LocalDate.now();
             LocalDate finrecoleccion = tratamiento.getFinRecoleccion();
