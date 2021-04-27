@@ -22,7 +22,7 @@ public class Tratamiento {
     private Producto productoAplicado;
     
     private String lote;
-    private LocalDate fechaInicio;
+    private LocalDate fechaInicio; 
     private LocalDate finReentrada;
     private LocalDate finRecoleccion;
 

@@ -19,3 +19,15 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+.DateSearcher{
+  padding: 5px;
+  border: black 2px solid;
+  margin-top: 20px;
+}
+
+.labeldate{
+  margin-left: 5px;
+  font-style: italic;
+  font-size: small;
+}

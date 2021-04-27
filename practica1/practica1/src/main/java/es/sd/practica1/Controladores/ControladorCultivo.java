@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,10 +22,6 @@ public class ControladorCultivo {
     @Autowired
     private ServicioCultivo cultivos;
 
-    @ModelAttribute
-    private void m(Model model) {
-        model.addAttribute("vieneDeCrearUnTratamiento", false);
-    }
 
     @GetMapping(value="/")
     public String index(Model model) {
@@ -54,10 +49,18 @@ public class ControladorCultivo {
     @RequestMapping(value="/modifyCultivo/{id}", method=RequestMethod.GET)
     public String modifycultivo(@PathVariable Long id, String especie, String variedad, String zona, String fechaPlantado) {
         Cultivo nuevoCultivo = cultivos.findById(id);
-        nuevoCultivo.setEspecie(especie);
-        nuevoCultivo.setVariedad(variedad);
-        nuevoCultivo.setZona(zona);
-        nuevoCultivo.setFechaPlantado(LocalDate.parse(fechaPlantado));
+        if(!especie.isBlank()){
+            nuevoCultivo.setEspecie(especie);
+        }
+        if(!variedad.isBlank()){
+            nuevoCultivo.setVariedad(variedad);
+        }
+        if(!zona.isBlank()){
+            nuevoCultivo.setZona(zona);
+        }
+        if(!fechaPlantado.isBlank()){
+            nuevoCultivo.setFechaPlantado(LocalDate.parse(fechaPlantado));
+        }
         cultivos.save(nuevoCultivo);
         return "exitomodificacion";
     }
@@ -76,9 +79,6 @@ public class ControladorCultivo {
         nuevoCultivo.setZona(zona);
         nuevoCultivo.setFechaPlantado(LocalDate.parse(fechaPlantado));
         cultivos.save(nuevoCultivo);
-        if((boolean) model.getAttribute("vieneDeCrearUnTratamiento")){
-            return "formularioTratamiento";
-        }
         return "exito";
     }
     

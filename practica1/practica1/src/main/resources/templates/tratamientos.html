@@ -46,6 +46,38 @@
       <!-- /.col-lg-2 -->
 
       <div class="col-lg-8">
+        <div class="DateSearcher">Buscador tratamientos para cultivos con fecha en vigor <br>
+          <form action="/buscandoTratamiento" method="GET">
+          <input type="date" ><label class="labeldate"> Introduzca la fecha a la que quiere referirse</label>
+          <input type="submit" value="BUSCAR">
+          </form>
+        </div>
+
+        <div class="row my-4">
+          
+
+          
+          <div th:each="tratamiento : ${tratamientosEnVigor}" class="col-lg-12">
+
+            
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">Tratamiento para:</h5>
+                  <h4 th:text="${tratamiento.cultivoAplicado.especie}"></h4>
+                  <p class="card-text" th:text="'Producto: '+${tratamiento.productoAplicado.nombre}"></p>
+                  <p class="card-text" th:text="'Inicio: '+${tratamiento.fechaInicio}"></p>
+                  <p class="card-text" th:text="'Reentrada: '+${tratamiento.finReentrada}"></p>
+                  <p class="card-text" th:text="'Recoleccion: '+${tratamiento.finRecoleccion}"></p>
+                </div>
+                <div class="card-footer">
+                  <a th:href="@{'/editarTratamiento/'+${tratamiento.id}}">Editar cultivo</a>
+                </div>
+              </div>
+            
+          </div>
+          
+
+        </div>
 
         <div class="row my-4">
 
