@@ -48,12 +48,22 @@
       <div class="col-lg-8">
 
         <div class="row my-4">
-          
 
-          
+        <form action="/filtrar" method="POST">  
+          <select name="metodoFiltrado">
+            <option value="EspecieAsc">Especie Ascendente</option>
+            <option value="EspecieDes">Especie Descendente</option>
+            <option value="FinReentradaAsc">Fin Reentrada Ascendente</option>
+            <option value="FinReentradaDes">Fin Reentrada Descendente</option>
+            <option value="FinRecoleccionAsc">Fin Recoleccion Ascendente</option>
+            <option value="FinRecoleccionDes">Fin Recoleccion Descendente</option>
+          </select>
+          <input type="submit" value="Filtrar">
+        </form>  
+
           <div th:each="tratamiento : ${listaTratamientos}" class="col-lg-12">
 
-            
+
               <div class="card h-100">
                 <div class="card-body">
                   <h5 class="card-title">Tratamiento para:</h5>

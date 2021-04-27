@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Cultivo {
+public class Cultivo implements Comparable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -73,5 +73,10 @@ public class Cultivo {
     public void setId(long id) {
         this.id = id;
     }
-    
+
+   
+    @Override
+    public int compareTo(Object o) {
+        return ((Cultivo) o).getEspecie().compareTo(this.getEspecie());
+    }  
 }
