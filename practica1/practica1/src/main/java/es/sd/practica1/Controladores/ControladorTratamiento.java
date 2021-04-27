@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import es.sd.practica1.Entidades.Cultivo;
 import es.sd.practica1.Entidades.Producto;
@@ -97,25 +97,25 @@ public class ControladorTratamiento {
     }
 
     @PostMapping(value="/filtrar")
-    public String filtarTratamientos(@RequestBody String metodoFiltrado, Model model) {
+    public String filtarTratamientos(@RequestParam String metodoFiltrado, Model model) {
         List<Tratamiento> tratamientos;
         switch (metodoFiltrado) {
-            case "metodoFiltrado=EspecieAsc":
+            case "EspecieAsc":
                 tratamientos = servicioTratamientos.findAllOrderByEspecieAsc();
                 break;
-            case "metodoFiltrado=EspecieDes":
+            case "EspecieDes":
                 tratamientos = servicioTratamientos.findAllOrderByEspecieDesc();
                 break;
-            case "metodoFiltrado=FinReentradaAsc":
+            case "FinReentradaAsc":
                 tratamientos = servicioTratamientos.findAll(Sort.by(Order.asc("finReentrada")));
                 break;
-            case "metodoFiltrado=FinReentradaDes":
+            case "FinReentradaDes":
                 tratamientos = servicioTratamientos.findAll(Sort.by(Order.desc("finReentrada")));
                 break;
-            case "metodoFiltrado=FinRecoleccionAsc":
+            case "FinRecoleccionAsc":
                 tratamientos = servicioTratamientos.findAll(Sort.by(Order.asc("finRecoleccion")));
                 break;
-            case "metodoFiltrado=FinRecoleccionDes":
+            case "FinRecoleccionDes":
                 tratamientos = servicioTratamientos.findAll(Sort.by(Order.desc("finRecoleccion")));
                 break;
             default:
