@@ -1,7 +1,6 @@
 package es.sd.practica1.Servicios;
 
 import java.time.LocalDate;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import es.sd.practica1.Entidades.Tratamiento;
 import es.sd.practica1.Repositorios.RepositorioTratamiento;
-import net.bytebuddy.dynamic.scaffold.MethodGraph.Linked;
 
 @Service
 public class ServicioTratamiento {

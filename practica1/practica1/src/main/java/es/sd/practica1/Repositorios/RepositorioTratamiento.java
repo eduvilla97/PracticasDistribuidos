@@ -2,8 +2,6 @@ package es.sd.practica1.Repositorios;
 
 import java.util.List;
 import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
