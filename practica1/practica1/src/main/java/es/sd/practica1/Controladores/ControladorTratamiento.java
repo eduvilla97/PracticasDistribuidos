@@ -1,11 +1,14 @@
 package es.sd.practica1.Controladores;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 import es.sd.practica1.Entidades.Cultivo;
 import es.sd.practica1.Entidades.Producto;
@@ -87,6 +91,37 @@ public class ControladorTratamiento {
         return "exito";
     }
 
+    @PostMapping(value="/filtrar")
+    public String filtarTratamientos(@RequestBody String metodoFiltrado, Model model) {
+        List<Tratamiento> tratamientos;
+        switch (metodoFiltrado) {
+            case "metodoFiltrado=EspecieAsc":
+                tratamientos = servicioTratamientos.findAllOrderByEspecieAsc();
+                break;
+            case "metodoFiltrado=EspecieDes":
+                tratamientos = servicioTratamientos.findAllOrderByEspecieDesc();
+                break;
+            case "metodoFiltrado=FinReentradaAsc":
+                tratamientos = servicioTratamientos.findAll(Sort.by(Order.asc("finReentrada")));
+                break;
+            case "metodoFiltrado=FinReentradaDes":
+                tratamientos = servicioTratamientos.findAll(Sort.by(Order.desc("finReentrada")));
+                break;
+            case "metodoFiltrado=FinRecoleccionAsc":
+                tratamientos = servicioTratamientos.findAll(Sort.by(Order.asc("finRecoleccion")));
+                break;
+            case "metodoFiltrado=FinRecoleccionDes":
+                tratamientos = servicioTratamientos.findAll(Sort.by(Order.desc("finRecoleccion")));
+                break;
+            default:
+                tratamientos = servicioTratamientos.findAll();
+                break;
+        }
+
+        model.addAttribute("listaTratamientos", tratamientos);
+        return "tratamientos";
+    }
+    
     @GetMapping(value = "/buscandoTratamiento")
     public String busquedaTratamientoPorFecha(@RequestBody LocalDate fechaInicio, Model model){
         List<Tratamiento> todostratamientos = servicioTratamientos.findAll();

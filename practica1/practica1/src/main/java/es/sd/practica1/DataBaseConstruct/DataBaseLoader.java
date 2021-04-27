@@ -42,10 +42,10 @@ public class DataBaseLoader {
 
 
 
-        Producto amoxicilina = new Producto("amoxicilina","protege la planta",19,22);
-        Producto dalsy = new Producto("dalsy","protege la planta",19,22);
-        Producto apiretal = new Producto("apiretal","protege la planta",19,22);
-        Producto ibuprofeno = new Producto("ibuprofeno","protege la planta",19,22);
+        Producto amoxicilina = new Producto("Amoxicilina","protege la planta",19,22);
+        Producto dalsy = new Producto("Dalsy","protege la planta",19,22);
+        Producto apiretal = new Producto("Apiretal","protege la planta",19,22);
+        Producto ibuprofeno = new Producto("Ibuprofeno","protege la planta",19,22);
 
 
         Tratamiento tratamiento =  new Tratamiento(Margarita,amoxicilina,"Panama",localDate,localDate,localDate);
