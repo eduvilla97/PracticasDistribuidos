@@ -2,13 +2,17 @@ package es.sd.practica1.Controladores;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.swing.plaf.basic.BasicTreeUI.TreeToggleAction;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -122,27 +126,29 @@ public class ControladorTratamiento {
         return "tratamientos";
     }
     
-    @GetMapping(value = "/buscandoTratamiento")
-    public String busquedaTratamientoPorFecha(@RequestBody LocalDate fechaInicio, Model model){
-        List<Tratamiento> todostratamientos = servicioTratamientos.findAll();
-        LinkedList<Tratamiento> tratamientosEnVigor = new LinkedList<>();
-        for (Tratamiento tratamiento: todostratamientos){
-            LocalDate fechafinalTratamiento = LocalDate.now();
-            LocalDate finrecoleccion = tratamiento.getFinRecoleccion();
-            LocalDate finReentrada = tratamiento.getFinReentrada();
-            if (finReentrada.isAfter(finrecoleccion) || finReentrada.isEqual(finrecoleccion)){
-                 fechafinalTratamiento = finrecoleccion;
-            }
-            else {  fechafinalTratamiento = finReentrada;}
-            
-            Optional<Tratamiento> tratamientoEnVigor = servicioTratamientos.searchByDate(fechaInicio, fechafinalTratamiento);
-            if (tratamientoEnVigor != null){
-                tratamientosEnVigor.add(tratamientoEnVigor.get());
-            }
+   
+
+
+    @GetMapping("/getTratamientosByDate")
+    public String busquedaTratamientoPorFecha(@RequestParam String date, Model model) {
+
+        Optional<List<Tratamiento>> reentrada =  servicioTratamientos.findByfinReentradaGreaterThan(LocalDate.parse(date));
+        Optional<List<Tratamiento>> recoleccion =  servicioTratamientos.findByfinRecoleccionGreaterThan(LocalDate.parse(date));
+        List<Tratamiento> listacompleta = new ArrayList();
+        
+
+        if (reentrada.isPresent()) {
+            listacompleta.addAll(reentrada.get());
         }
-        model.addAttribute("tratamientosEnVigor", tratamientosEnVigor);
+        if (recoleccion.isPresent()) {
+            listacompleta.addAll(recoleccion.get());
+        }
+       
+        model.addAttribute("listaTratamientos", listacompleta);
+       
         return "tratamientos";
     }
+
     
     
 }

@@ -12,22 +12,9 @@ public interface RepositorioTratamiento extends JpaRepository<Tratamiento,Long>{
     List<Tratamiento> findByOrderByCultivoAplicadoEspecieAsc();
     List<Tratamiento> findByOrderByCultivoAplicadoEspecieDesc();
 
-    //Tratamiento findByfechaInicioLessThanEqualAndfinReentradaGreaterThanEqual(LocalDate fechainicio, LocalDate fechafinal);
+    Optional<List<Tratamiento>> findByfinReentradaGreaterThan(LocalDate date);
+    Optional<List<Tratamiento>> findByfinRecoleccionGreaterThan(LocalDate date);
+
+
     
-
-    Optional<Tratamiento> findByfechaInicioBetween(LocalDate fechaInicio, LocalDate fechaFinal);
-
-
-    /*Optional<List<Tratamiento>> findFecha(LocalDate fechaIn, LocalDate fechaFin) {
-        this.fileRepository.find({
-            where: { 
-                fechaInicio:  MoreThan(fechaIn) ,
-                finReentrada:  MoreThan(fechaFin) },
-         });
-    }*/
-    
-    /*List<Tratamiento>findAllOrderByFinReentradaAsc();
-    List<Tratamiento>findAllOrderByFinReentradaDesc();
-    List<Tratamiento>findAllOrderByFinRecoleccionAsc();
-    List<Tratamiento>findAllOrderByFinRecoleccionDesc();*/
 }

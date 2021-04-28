@@ -31,7 +31,9 @@ public class DataBaseLoader {
     @PostConstruct
     private void initDataBase(){
         LocalDate localDate = LocalDate.now();
-
+        LocalDate localDate2 = localDate.plusDays(3);
+        LocalDate localDate3 = localDate.plusDays(6);
+        LocalDate localDate4 = localDate.plusDays(8);
 
         Cultivo Margarita = new Cultivo("Margarita","Amarilla",localDate,"Espana");
         Cultivo Rosa = new Cultivo("Rosa","Roja",localDate,"España");
@@ -48,11 +50,11 @@ public class DataBaseLoader {
         Producto ibuprofeno = new Producto("Ibuprofeno","protege la planta",19,22);
 
 
-        Tratamiento tratamiento =  new Tratamiento(Margarita,amoxicilina,"Panama",localDate,localDate,localDate);
-        Tratamiento tratamiento2 =  new Tratamiento(Margarita,dalsy,"Panama",localDate,localDate,localDate);
-        Tratamiento tratamiento3 =  new Tratamiento(Rosa,amoxicilina,"Panama",localDate,localDate,localDate);
-        Tratamiento tratamiento5 =  new Tratamiento(Clavel,apiretal,"Panama",localDate,localDate,localDate);
-        Tratamiento tratamiento6 =  new Tratamiento(Clavel,amoxicilina,"Panama",localDate,localDate,localDate);
+        Tratamiento tratamiento =  new Tratamiento(Margarita,amoxicilina,"Panama",localDate,localDate2,localDate4);
+        Tratamiento tratamiento2 =  new Tratamiento(Margarita,dalsy,"Panama",localDate,localDate3,localDate2);
+        Tratamiento tratamiento3 =  new Tratamiento(Rosa,amoxicilina,"Panama",localDate,localDate2,localDate3);
+        Tratamiento tratamiento5 =  new Tratamiento(Clavel,apiretal,"Panama",localDate,localDate,localDate4);
+        Tratamiento tratamiento6 =  new Tratamiento(Clavel,amoxicilina,"Panama",localDate,localDate2,localDate3);
         Tratamiento tratamiento7 =  new Tratamiento(RosaNegra,ibuprofeno,"Panama",localDate,localDate,localDate);
         Tratamiento tratamiento8 =  new Tratamiento(Tulipan,ibuprofeno,"Panama",localDate,localDate,localDate);
 

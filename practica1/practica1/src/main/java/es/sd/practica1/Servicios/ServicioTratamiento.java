@@ -24,11 +24,18 @@ public class ServicioTratamiento {
         return repositorio.findAll();
     }
 
-    public Optional<Tratamiento> searchByDate( LocalDate fechainicio,LocalDate fechafinal) {
-        //Optional<List<Tratamiento>> initDATE = repositorio.findFecha(fechainicio, fechafinal);
-        return repositorio.findByfechaInicioBetween(fechainicio, fechafinal);
-        //return repositorio.findByfechaInicioLessThanEqualAndfinReentradaGreaterThanEqual(fechainicio, fechafinal);
+ 
+
+    public Optional<List<Tratamiento>> findByfinReentradaGreaterThan(LocalDate date){
+        return repositorio.findByfinReentradaGreaterThan(date);
     }
+
+    public Optional<List<Tratamiento>> findByfinRecoleccionGreaterThan(LocalDate date){
+        return repositorio.findByfinRecoleccionGreaterThan(date);
+    }
+
+
+
     
     public List<Tratamiento>findAllOrderByEspecieAsc(){
         return repositorio.findByOrderByCultivoAplicadoEspecieAsc();
